@@ -28,15 +28,8 @@ public partial class _Default : Page
         AdomdCommand COM = CON.CreateCommand();
 
         string s = "SELECT Flattened  PREDICT([Movies],5" + ") FROM [CustomersMM] NATURAL PREDICTION JOIN (SELECT (" + "Select '" + newInput + "' as [movie]" + ") AS [Movies]) As T";
-        //s += "Select '"+input+"' as [movie]";
-
-        //s += ") AS [Movies]) As T";
-
 
         COM.CommandText = s;
-
-        //Label2.Text = input + "Test";
-
 
         AdomdDataReader DR = COM.ExecuteReader();
 
@@ -44,17 +37,14 @@ public partial class _Default : Page
         {
             if (DR[0] != null)
                 output.Add(DR[0].ToString());
-
         }
 
         DR.Close();
         CON.Close();
-
     }
 
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
         String selected = DropDownList1.SelectedValue;
         List<string> output = new List<string>();
         getBoughtToghtherMovies(selected, output);

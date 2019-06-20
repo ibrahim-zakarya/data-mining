@@ -16,7 +16,15 @@
 
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <h3>Actors:</h3>
+    <h3>
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="Actor" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ADMConnectionString %>" SelectCommand="SELECT DISTINCT [Actor] FROM [Actors] ORDER BY [Actor]"></asp:SqlDataSource>
+    </h3>
+    <br />
     
-    <h3>***:</h3>
-    
+    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+    <asp:BulletedList ID="BulletedList1" runat="server" >
+    </asp:BulletedList>
 </asp:Content>
